@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Code311.Host</RootNamespace>
+    <AssemblyName>Code311.Host</AssemblyName>
+    <Description>Hybrid MVC + Razor demo host for Code311 framework packages.</Description>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Code311.Ui.Core\Code311.Ui.Core.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Core\Code311.Tabler.Core.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Components\Code311.Tabler.Components.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Mvc\Code311.Tabler.Mvc.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Razor\Code311.Tabler.Razor.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Dashboard\Code311.Tabler.Dashboard.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Widgets.DataTables\Code311.Tabler.Widgets.DataTables.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Widgets.Calendar\Code311.Tabler.Widgets.Calendar.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Widgets.Charts\Code311.Tabler.Widgets.Charts.csproj" />
+    <ProjectReference Include="..\Code311.Persistence.EFCore\Code311.Persistence.EFCore.csproj" />
+    <ProjectReference Include="..\Code311.Licensing\Code311.Licensing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,8 @@
+@model WidgetDemoViewModel
+<cd311-page title="Widgets / DataTables"></cd311-page>
+<div id="@Model.ElementId" class="widget-surface">DataTables widget mount point</div>
+<pre>@Model.InitializationJson</pre>
+<p>
+    <a asp-controller="Widgets" asp-action="Calendar">Calendar</a> |
+    <a asp-controller="Widgets" asp-action="Charts">Charts</a>
+</p>

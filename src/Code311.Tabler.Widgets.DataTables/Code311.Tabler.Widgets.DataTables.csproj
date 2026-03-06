@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Code311.Tabler.Widgets.DataTables</RootNamespace>
+    <AssemblyName>Code311.Tabler.Widgets.DataTables</AssemblyName>
+    <Description>DataTables integration lifecycle package for Code311 Tabler widgets.</Description>
+    <PackageId>Code311.Tabler.Widgets.DataTables</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Code311.Tabler.Core\Code311.Tabler.Core.csproj" />
+  </ItemGroup>
+</Project>
