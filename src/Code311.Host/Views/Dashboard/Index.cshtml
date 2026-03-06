@@ -1,0 +1,15 @@
+@model DashboardDemoViewModel
+@using Code311.Tabler.Dashboard.Models
+@using Code311.Ui.Abstractions.Semantics
+
+<cd311-page title="Dashboard"></cd311-page>
+@{
+    var panel = new DashboardPanelModel(
+        PanelKey: "panel-demo",
+        Title: "Operational KPI",
+        BodyHtml: Model.AdvancedEnabled ? "Advanced dashboard feature is licensed." : "Advanced feature unavailable.",
+        Tone: Model.AdvancedEnabled ? UiTone.Success : UiTone.Warning);
+}
+
+<div>@await Component.InvokeAsync("Cd311MetricCard", panel)</div>
+<p>Feature gate result: <strong>@Model.FeatureReason</strong></p>
