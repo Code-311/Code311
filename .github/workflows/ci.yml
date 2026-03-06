@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore Code311.sln
+
+      - name: Build
+        run: dotnet build Code311.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test Code311.sln --configuration Release --no-build --verbosity normal
