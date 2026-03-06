@@ -47,7 +47,7 @@ public sealed class Cd311TextAreaTagHelper(ITablerSemanticClassMapper mapper) : 
 }
 
 [HtmlTargetElement("cd311-select")]
-public sealed class Cd311SelectTagHelper(ITablerSemanticClassMapper mapper) : TagHelper
+public sealed class Cd311SelectTagHelper : TagHelper
 {
     public string? Field { get; set; }
     public IReadOnlyCollection<Cd311OptionItem>? Options { get; set; }

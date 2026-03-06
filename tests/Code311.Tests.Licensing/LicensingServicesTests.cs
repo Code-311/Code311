@@ -69,7 +69,7 @@ public sealed class LicensingServicesTests
     {
         var services = new ServiceCollection()
             .AddCode311Licensing(options => options.RequireValidLicenseAtStartup = false)
-            .AddCode311InMemoryLicenseSource(BuildLicense(features: ["dashboard.basic"]))
+            .AddCode311InMemoryLicenseSource(BuildLicense(features: new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "dashboard.basic" }))
             .BuildServiceProvider();
 
         var gate = services.GetRequiredService<ILicenseFeatureGate>();
@@ -85,7 +85,7 @@ public sealed class LicensingServicesTests
     {
         var services = new ServiceCollection()
             .AddCode311Licensing(options => options.RequireValidLicenseAtStartup = false)
-            .AddCode311InMemoryLicenseSource(BuildLicense(features: ["dashboard.advanced"]))
+            .AddCode311InMemoryLicenseSource(BuildLicense(features: new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "dashboard.advanced" }))
             .BuildServiceProvider();
 
         var gate = services.GetRequiredService<ILicenseFeatureGate>();
@@ -113,6 +113,7 @@ public sealed class LicensingServicesTests
     [Fact]
     public void UiAndTablerPackages_ShouldNotReferenceCode311Licensing()
     {
+        var repositoryRoot = FindRepositoryRoot();
         var forbiddenProjectFiles = new[]
         {
             "src/Code311.Ui.Abstractions/Code311.Ui.Abstractions.csproj",
@@ -127,10 +128,28 @@ public sealed class LicensingServicesTests
 
         foreach (var relativePath in forbiddenProjectFiles)
         {
-            var full = Path.Combine(AppContext.BaseDirectory, "../../../../", relativePath);
+            var full = Path.Combine(repositoryRoot, relativePath);
             var xml = File.ReadAllText(full);
             Assert.DoesNotContain("Code311.Licensing", xml, StringComparison.Ordinal);
         }
+    }
+
+    private static string FindRepositoryRoot()
+    {
+        var current = new DirectoryInfo(AppContext.BaseDirectory);
+
+        while (current is not null)
+        {
+            var solutionPath = Path.Combine(current.FullName, "Code311.sln");
+            if (File.Exists(solutionPath))
+            {
+                return current.FullName;
+            }
+
+            current = current.Parent;
+        }
+
+        throw new DirectoryNotFoundException("Unable to locate repository root containing Code311.sln.");
     }
 
     private static Code311License BuildLicense(DateTimeOffset? expiresUtc = null, DateTimeOffset? notBeforeUtc = null, IReadOnlySet<string>? features = null)

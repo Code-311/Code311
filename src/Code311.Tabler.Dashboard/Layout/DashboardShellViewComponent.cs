@@ -3,6 +3,7 @@ using Code311.Tabler.Dashboard.Models;
 using Code311.Ui.Abstractions.Semantics;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace Code311.Tabler.Dashboard.Layout;
 

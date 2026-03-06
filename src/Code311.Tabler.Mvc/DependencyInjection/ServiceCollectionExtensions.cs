@@ -58,8 +58,7 @@ public static class ServiceCollectionExtensions
     }
 }
 
-internal sealed class ConfigureCode311MvcOptions(
-    IServiceProvider serviceProvider) : IConfigureOptions<MvcOptions>
+internal sealed class ConfigureCode311MvcOptions : IConfigureOptions<MvcOptions>
 {
     public void Configure(MvcOptions options)
     {

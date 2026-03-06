@@ -2,6 +2,7 @@ using Code311.Tabler.Core.Mapping;
 using Code311.Ui.Abstractions.Semantics;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Code311.Tabler.Components.Layout;

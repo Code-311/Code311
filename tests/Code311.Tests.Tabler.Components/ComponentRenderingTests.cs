@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text.Encodings.Web;
 using Code311.Tabler.Components.Common;
 using Code311.Tabler.Components.Data;
 using Code311.Tabler.Components.Feedback;
@@ -26,7 +27,7 @@ public sealed class ComponentRenderingTests
     [Fact]
     public void Cd311Input_ShouldRenderSemanticClasses()
     {
-        var helper = new Cd311InputTagHelper(new TablerSemanticClassMapper)
+        var helper = new Cd311InputTagHelper(new TablerSemanticClassMapper())
         {
             Field = "Email",
             Label = "Email",
@@ -46,7 +47,7 @@ public sealed class ComponentRenderingTests
     [Fact]
     public void Cd311Tabs_ShouldRenderItems()
     {
-        var helper = new Cd311TabsTagHelper(new TablerSemanticClassMapper)
+        var helper = new Cd311TabsTagHelper(new TablerSemanticClassMapper())
         {
             Items =
             [
@@ -66,7 +67,7 @@ public sealed class ComponentRenderingTests
     [Fact]
     public void Cd311Card_ShouldSetToneClass()
     {
-        var helper = new Cd311CardTagHelper(new TablerSemanticClassMapper) { Tone = UiTone.Warning, Title = "Card" };
+        var helper = new Cd311CardTagHelper(new TablerSemanticClassMapper()) { Tone = UiTone.Warning, Title = "Card" };
         var output = CreateOutput();
 
         helper.Process(CreateContext(), output);
@@ -77,7 +78,7 @@ public sealed class ComponentRenderingTests
     [Fact]
     public void Cd311Progress_ShouldClampAndRenderBar()
     {
-        var helper = new Cd311ProgressTagHelper(new TablerSemanticClassMapper) { Value = 150, Tone = UiTone.Success };
+        var helper = new Cd311ProgressTagHelper(new TablerSemanticClassMapper()) { Value = 150, Tone = UiTone.Success };
         var output = CreateOutput();
 
         helper.Process(CreateContext(), output);
@@ -90,7 +91,7 @@ public sealed class ComponentRenderingTests
     [Fact]
     public void Cd311Badge_ShouldRenderTone()
     {
-        var helper = new Cd311BadgeTagHelper(new TablerSemanticClassMapper) { Tone = UiTone.Danger, Text = "Blocked" };
+        var helper = new Cd311BadgeTagHelper(new TablerSemanticClassMapper()) { Tone = UiTone.Danger, Text = "Blocked" };
         var output = CreateOutput();
 
         helper.Process(CreateContext(), output);
@@ -102,7 +103,7 @@ public sealed class ComponentRenderingTests
     [Fact]
     public void Cd311Avatar_ShouldFallbackToInitials()
     {
-        var helper = new Cd311AvatarTagHelper(new TablerSemanticClassMapper) { Name = "Code Three" };
+        var helper = new Cd311AvatarTagHelper(new TablerSemanticClassMapper()) { Name = "Code Three" };
         var output = CreateOutput();
 
         helper.Process(CreateContext(), output);
@@ -126,10 +127,12 @@ public sealed class ComponentRenderingTests
         var host = new Cd311PageAlertHostViewComponent(feedback);
 
         Assert.Contains("active", overlayOutput.Attributes["class"].Value?.ToString());
-        var result = Assert.IsType<Microsoft.AspNetCore.Mvc.ViewComponents.HtmlContentViewComponentResult>(host.Invoke());
+        var result = host.Invoke();
+        var htmlResult = Assert.IsType<Microsoft.AspNetCore.Mvc.ViewComponents.HtmlContentViewComponentResult>(result);
         using var writer = new StringWriter();
-        result.Content.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
-        Assert.Contains("Saved", writer.ToString());
+        htmlResult.EncodedContent.WriteTo(writer, HtmlEncoder.Default);
+        var html = writer.ToString();
+        Assert.Contains("Saved", html);
     }
 
     private static TagHelperContext CreateContext() =>

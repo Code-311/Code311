@@ -2,6 +2,7 @@ using Code311.Tabler.Core.Mapping;
 using Code311.Tabler.Dashboard.Models;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace Code311.Tabler.Dashboard.Kpi;
 

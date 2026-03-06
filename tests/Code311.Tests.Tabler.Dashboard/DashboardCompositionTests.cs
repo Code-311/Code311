@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text.Encodings.Web;
 using Code311.Tabler.Core.Mapping;
 using Code311.Tabler.Dashboard.Composition;
 using Code311.Tabler.Dashboard.Kpi;
@@ -41,10 +42,11 @@ public sealed class DashboardCompositionTests
     public void DashboardShell_ShouldRenderShellClasses()
     {
         var component = new Cd311DashboardShellViewComponent(new TablerSemanticClassMapper());
-        var result = Assert.IsType<HtmlContentViewComponentResult>(component.Invoke(new DashboardPageModel("Sales", []), UiLayout.Grid));
+        var result = component.Invoke(new DashboardPageModel("Sales", []), UiLayout.Grid);
+        var htmlResult = Assert.IsType<HtmlContentViewComponentResult>(result);
 
         using var writer = new StringWriter();
-        result.Content.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
+        htmlResult.EncodedContent.WriteTo(writer, HtmlEncoder.Default);
         var html = writer.ToString();
 
         Assert.Contains("cd311-dashboard-shell", html);
@@ -55,10 +57,11 @@ public sealed class DashboardCompositionTests
     public void KpiSummary_ShouldRenderToneMappedItems()
     {
         var component = new Cd311KpiSummaryViewComponent(new TablerSemanticClassMapper());
-        var result = Assert.IsType<HtmlContentViewComponentResult>(component.Invoke("KPIs", [new DashboardKpiItem("Users", "100", UiTone.Info, "+5%") ]));
+        var result = component.Invoke("KPIs", [new DashboardKpiItem("Users", "100", UiTone.Info, "+5%") ]);
+        var htmlResult = Assert.IsType<HtmlContentViewComponentResult>(result);
 
         using var writer = new StringWriter();
-        result.Content.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
+        htmlResult.EncodedContent.WriteTo(writer, HtmlEncoder.Default);
         var html = writer.ToString();
 
         Assert.Contains("text-info", html);
@@ -69,10 +72,11 @@ public sealed class DashboardCompositionTests
     public void QuickActionsPanel_ShouldRenderButtons()
     {
         var component = new Cd311QuickActionsPanelViewComponent(new TablerSemanticClassMapper());
-        var result = Assert.IsType<HtmlContentViewComponentResult>(component.Invoke("Actions", [new DashboardQuickAction(new("Create"), UiTone.Accent)]));
+        var result = component.Invoke("Actions", [new DashboardQuickAction(new("Create"), UiTone.Accent)]);
+        var htmlResult = Assert.IsType<HtmlContentViewComponentResult>(result);
 
         using var writer = new StringWriter();
-        result.Content.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
+        htmlResult.EncodedContent.WriteTo(writer, HtmlEncoder.Default);
         var html = writer.ToString();
 
         Assert.Contains("btn-primary", html);
@@ -83,10 +87,11 @@ public sealed class DashboardCompositionTests
     public void ActivityPanel_ShouldRenderFeedItems()
     {
         var component = new Cd311ActivityPanelViewComponent(new TablerSemanticClassMapper());
-        var result = Assert.IsType<HtmlContentViewComponentResult>(component.Invoke("Activity", [new DashboardActivityItem("Imported orders", DateTimeOffset.UtcNow, UiTone.Warning)]));
+        var result = component.Invoke("Activity", [new DashboardActivityItem("Imported orders", DateTimeOffset.UtcNow, UiTone.Warning)]);
+        var htmlResult = Assert.IsType<HtmlContentViewComponentResult>(result);
 
         using var writer = new StringWriter();
-        result.Content.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
+        htmlResult.EncodedContent.WriteTo(writer, HtmlEncoder.Default);
         var html = writer.ToString();
 
         Assert.Contains("Imported orders", html);
