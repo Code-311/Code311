@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Code311.Host Demo</title>
+</head>
+<body>
+<nav>
+    <a asp-controller="Home" asp-action="Index">Home</a> |
+    <a asp-controller="ComponentsDemo" asp-action="Forms">Components</a> |
+    <a asp-controller="Dashboard" asp-action="Index">Dashboard</a> |
+    <a asp-controller="Widgets" asp-action="DataTables">Widgets</a> |
+    <a asp-controller="Preferences" asp-action="Index">Preferences / Theme</a> |
+    <a asp-page="/Diagnostics/Licensing">Licensing Diagnostics</a> |
+    <a asp-controller="Architecture" asp-action="About">Architecture / About</a>
+</nav>
+<hr />
+<main>
+    @RenderBody()
+</main>
+<hr />
+<footer>Code311.Host hybrid MVC + Razor showcase portal.</footer>
+</body>
+</html>
