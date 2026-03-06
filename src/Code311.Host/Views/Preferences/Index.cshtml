@@ -1,0 +1,24 @@
+@model PreferencesPageViewModel
+
+<cd311-page title="Preferences / Theme"></cd311-page>
+@if (!string.IsNullOrWhiteSpace(Model.Message))
+{
+    <p><strong>@Model.Message</strong></p>
+}
+
+<form asp-controller="Preferences" asp-action="Save" method="post">
+    @Html.AntiForgeryToken()
+    <label>Theme <input type="text" name="theme" value="@Model.Current.Theme" /></label><br />
+    <label>Density
+        <select name="density">
+            <option value="Comfortable" selected="@(Model.Current.Density == UiDensity.Comfortable)">Comfortable</option>
+            <option value="Compact" selected="@(Model.Current.Density == UiDensity.Compact)">Compact</option>
+            <option value="Spacious" selected="@(Model.Current.Density == UiDensity.Spacious)">Spacious</option>
+        </select>
+    </label><br />
+    <label>Default Page Size <input type="number" name="defaultPageSize" value="@Model.Current.DefaultPageSize" min="5" max="200" /></label><br />
+    <label>Sidebar Collapsed <input type="checkbox" name="sidebarCollapsed" value="true" checked="@Model.Current.SidebarCollapsed" /></label><br />
+    <button type="submit">Save Preferences</button>
+</form>
+
+<p>Current persisted scope: tenant <code>@Model.Current.TenantId</code>, user <code>@Model.Current.UserId</code>.</p>
