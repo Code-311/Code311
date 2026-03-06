@@ -1,0 +1,9 @@
+<Project>
+  <Target Name="Code311_EnforceXmlDocs" BeforeTargets="CoreCompile">
+    <Error Condition="'$(GenerateDocumentationFile)' != 'true'" Text="GenerateDocumentationFile must be enabled for all projects." />
+  </Target>
+
+  <Target Name="Code311_EnforceNullable" BeforeTargets="CoreCompile">
+    <Error Condition="'$(Nullable)' != 'enable'" Text="Nullable must be enabled for all projects." />
+  </Target>
+</Project>

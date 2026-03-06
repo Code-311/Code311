@@ -1,0 +1,17 @@
+@page
+@model Code311.Host.Pages.Diagnostics.LicensingModel
+
+<cd311-page title="Licensing Diagnostics"></cd311-page>
+
+<p>Current status: <strong>@Model.Diagnostics.Current?.Level</strong> - @Model.Diagnostics.Current?.Message</p>
+
+<h3>Status History</h3>
+<ul>
+@foreach (var item in Model.Diagnostics.History)
+{
+    <li>@item.OccurredAtUtc.ToString("u") | @item.Stage | @item.Level | @item.Code | @item.Message</li>
+}
+</ul>
+
+<h3>Runtime Feature Probe</h3>
+<p>dashboard.advanced => <strong>@Model.FeatureCheck.Feature</strong> allowed: <strong>@Model.FeatureCheck.IsAllowed</strong> (@Model.FeatureCheck.Reason)</p>
