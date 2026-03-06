@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code311.Persistence.EFCore"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code311.Tests.Persistence.EFCore", "tests\Code311.Tests.Persistence.EFCore\Code311.Tests.Persistence.EFCore.csproj", "{B2222222-2222-2222-2222-222222222232}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code311.Licensing", "src\Code311.Licensing\Code311.Licensing.csproj", "{A1111111-1111-1111-1111-111111111122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code311.Tests.Licensing", "tests\Code311.Tests.Licensing\Code311.Tests.Licensing.csproj", "{B2222222-2222-2222-2222-222222222233}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +144,14 @@ Global
 		{B2222222-2222-2222-2222-222222222232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2222222-2222-2222-2222-222222222232}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2222222-2222-2222-2222-222222222232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1111111-1111-1111-1111-111111111122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1111111-1111-1111-1111-111111111122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1111111-1111-1111-1111-111111111122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1111111-1111-1111-1111-111111111122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2222222-2222-2222-2222-222222222233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2222222-2222-2222-2222-222222222233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2222222-2222-2222-2222-222222222233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2222222-2222-2222-2222-222222222233}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
