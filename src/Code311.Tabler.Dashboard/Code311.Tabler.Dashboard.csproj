@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Code311.Tabler.Dashboard</RootNamespace>
+    <AssemblyName>Code311.Tabler.Dashboard</AssemblyName>
+    <Description>Composition-focused dashboard package for Code311 Tabler.</Description>
+    <PackageId>Code311.Tabler.Dashboard</PackageId>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Code311.Ui.Abstractions\Code311.Ui.Abstractions.csproj" />
+    <ProjectReference Include="..\Code311.Ui.Core\Code311.Ui.Core.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Core\Code311.Tabler.Core.csproj" />
+    <ProjectReference Include="..\Code311.Tabler.Components\Code311.Tabler.Components.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Code311.Tabler.Widgets.Charts</RootNamespace>
+    <AssemblyName>Code311.Tabler.Widgets.Charts</AssemblyName>
+    <Description>Charts integration lifecycle package for Code311 Tabler widgets.</Description>
+    <PackageId>Code311.Tabler.Widgets.Charts</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Code311.Tabler.Core\Code311.Tabler.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Code311.Ui.Abstractions</RootNamespace>
+    <AssemblyName>Code311.Ui.Abstractions</AssemblyName>
+    <Description>Design-system-neutral contracts for the Code311 UI framework.</Description>
+    <PackageId>Code311.Ui.Abstractions</PackageId>
+  </PropertyGroup>
+</Project>
